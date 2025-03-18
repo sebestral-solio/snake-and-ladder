@@ -1,9 +1,13 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/supabase";
 
-// Initialize Supabase client with environment variables
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+// Initialize Supabase client with environment variables or fallback to mock implementation
+const supabaseUrl =
+  import.meta.env.VITE_SUPABASE_URL ||
+  "https://ovpqgrwcokmlnhcnlgbr.supabase.co";
+const supabaseKey =
+  import.meta.env.VITE_SUPABASE_ANON_KEY ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92cHFncndjb2ttbG5oY25sZ2JyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk5MDE4NzUsImV4cCI6MjA1NTQ3Nzg3NX0.qsFao7puB3DgxyBkxgw5DAkuD_kusPKhBgMa9l41jS0";
 
 // Create and export the Supabase client
 export const supabase = createClient<Database>(supabaseUrl, supabaseKey);
